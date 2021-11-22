@@ -1,0 +1,9 @@
+$body-color: black;
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: $body-color;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+}
