@@ -1,0 +1,44 @@
+.modal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0 0 0 / 40%);
+  backdrop-filter: blur(2px);
+  &_children {
+    background-color: white;
+    width: 600px;
+    min-height: 80vh;
+    border-radius: 3px;
+    box-shadow: 3px 2px 3px 2px #423f3b;
+
+    &_header {
+      background-color: #2f8fb9;
+      min-height: 50px;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 3px 3px 0 0;
+      &_btn {
+        color: white;
+        position: absolute;
+        right: 5px;
+        font-size: 25px;
+        &:hover {
+          background-color: #35a9db;
+        }
+      }
+    }
+    &_content {
+      padding: 10px;
+    }
+  }
+}
