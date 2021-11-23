@@ -1,17 +1,18 @@
 import React from "react";
 import { render } from "react-dom";
-import { Router } from "react-router-dom";
+import ReactNotification from "react-notifications-component";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import { App } from "./components/App";
-import history from "./history";
 import store from "./redux/store";
 import "./styles.scss";
 
 render(
   <Provider store={store}>
-    <Router history={history}>
+    <BrowserRouter>
       <ReactNotification />
       <App />
-    </Router>
+    </BrowserRouter>
   </Provider>,
   document.getElementById("root")
 );
