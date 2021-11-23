@@ -1,0 +1,45 @@
+.btn {
+  padding: 7px;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  transition: all 0.1s;
+  gap: 5px;
+  background-color: transparent;
+  &:hover {
+    background-color: #dcdcdc;
+    box-shadow: 1px 1px 2px 1px black;
+  }
+  &:active {
+    box-shadow: 0px 0px;
+    transform: translateX(2px);
+    background-color: #a5a0a0;
+  }
+  &:disabled {
+    background-color: #ececec;
+    border: none;
+    box-shadow: none;
+    color: #bfbfbf;
+  }
+  &_prevSymbol {
+    font-size: 18px;
+  }
+  &_add {
+    background-color: #337ab7;
+    &:hover {
+      background-color: #225886;
+    }
+  }
+  &_del {
+    background-color: #d9534f;
+    &:hover {
+      background-color: #923936;
+    }
+  }
+}
