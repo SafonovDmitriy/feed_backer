@@ -1,0 +1,38 @@
+.sideBar {
+  display: flex;
+  flex-direction: column;
+  width: 15vw;
+  height: 100vh;
+
+  background-color: #434345;
+  &_header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: white;
+    background-color: #327896;
+    height: 60px;
+    & span {
+      color: #99c1dd;
+    }
+  }
+  &_menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    & a {
+      padding: 12px 15px;
+      font-size: 20px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.5s;
+      text-transform: uppercase;
+    }
+  }
+}
+.active {
+  color: red;
+  background-color: #565658;
+}
