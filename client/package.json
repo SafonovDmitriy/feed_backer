@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open"
+    "server": "webpack-dev-server --node-env development",
+    "build": "webpack --progress --node-env production --env USE_SOURSE_MAP ",
+    "build:release": "webpack --progress --node-env production"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +18,7 @@
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.5.1",
+    "dotenv": "^10.0.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "sass": "^1.43.4",
@@ -33,7 +36,7 @@
     "react-dom": "^17.0.2",
     "react-notifications-component": "^3.1.0",
     "react-redux": "^7.2.6",
-    "react-router-dom": "^6.0.2",
+    "react-router-dom": "^5.2.0",
     "react-spinners": "^0.11.0",
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
