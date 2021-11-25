@@ -1,0 +1,21 @@
+.select {
+  height: 35px;
+  border: solid 1px;
+  border-radius: 3px;
+  outline: none;
+  width: 70%;
+  transition: all 0.2s;
+  background-color: white;
+  font-size: 16px;
+  position: relative;
+
+  &_disabled {
+    color: grey;
+    & option {
+      color: black;
+    }
+    & option:disabled {
+      color: grey;
+    }
+  }
+}
