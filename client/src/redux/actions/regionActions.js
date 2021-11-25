@@ -1,5 +1,6 @@
-import { call, put, select, takeLatest } from "redux-saga/effects";
+import { call, put, takeLatest } from "redux-saga/effects";
 import { fetchRegionsApi } from "../../api/httpService";
+import { showErrorMessage } from "../../helpers/showNotificationMessage";
 import { FETCH_REGIONS, SET_REGIONS, SET_REGIONS_LOADED } from "../actionTypes";
 export const regionSagaWorker = [takeLatest(FETCH_REGIONS, fetchFeedBackSaga)];
 
@@ -23,12 +24,9 @@ function* fetchFeedBackSaga() {
     const {
       data: { data },
     } = yield call(fetchRegionsApi);
-
     yield put(setRegionsAction(data));
-    // yield put(setUsersTotalPageAction(totalPage));
   } catch ({ data, status }) {
-    // yield put(errorHandlerAction(status));
-    // showErrorMessage(data?.message);
+    showErrorMessage(data?.error);
   } finally {
     yield put(setLoadedFlagForRegionsAction(true));
   }
