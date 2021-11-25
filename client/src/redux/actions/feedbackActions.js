@@ -6,6 +6,10 @@ import {
   putFeedbackApi,
 } from "../../api/httpService";
 import {
+  showErrorMessage,
+  showSuccessMessage,
+} from "../../helpers/showNotificationMessage";
+import {
   DELETE_FEEDBACK,
   FETCH_FEEDBACK,
   POST_FEEDBACK,
@@ -14,6 +18,7 @@ import {
   SET_FEEDBACK_LOADED,
 } from "../actionTypes";
 import { feedbacksSelector } from "../selectors";
+
 export const feedBackSagaWorker = [
   takeLatest(FETCH_FEEDBACK, fetchFeedBackSaga),
   takeLatest(POST_FEEDBACK, postFeedBackSaga),
@@ -56,7 +61,7 @@ function* fetchFeedBackSaga() {
     } = yield call(fetchFeedbackApi);
     yield put(setFeedBackAction(data));
   } catch ({ data, status }) {
-    // showErrorMessage(data?.message);
+    showErrorMessage(data?.error);
   } finally {
     yield put(setLoadedFlagForFeedBackAction(true));
   }
@@ -65,13 +70,19 @@ function* postFeedBackSaga({ payload }) {
   try {
     yield call(postFeedbackApi, payload);
     yield put(fetchFeedBackAction());
-  } catch ({ data, status }) {}
+    yield showSuccessMessage("Комментарий добавлен");
+  } catch ({ data, status }) {
+    showErrorMessage(data?.error);
+  }
 }
 function* putFeedBackSaga({ payload }) {
   try {
     yield call(putFeedbackApi, payload);
     yield put(fetchFeedBackAction());
-  } catch ({ data, status }) {}
+    yield showSuccessMessage("Комментарий обновлен");
+  } catch ({ data, status }) {
+    showErrorMessage(data?.error);
+  }
 }
 function* deleteFeedBackSaga({ payload }) {
   try {
@@ -82,12 +93,8 @@ function* deleteFeedBackSaga({ payload }) {
         feedBackList.filter((feedBack) => feedBack.feedback_id !== payload)
       )
     );
-    // yield put(setUsersAction(users));
-    // yield put(setUsersTotalPageAction(totalPage));
+    yield showSuccessMessage("Комментарий удален");
   } catch ({ data, status }) {
-    // yield put(errorHandlerAction(status));
-    // showErrorMessage(data?.message);
-  } finally {
-    // yield put(setUsersLoadedAction(true));
+    showErrorMessage(data?.error);
   }
 }

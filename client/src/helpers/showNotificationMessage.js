@@ -2,7 +2,7 @@ import { store as notificationStore } from "react-notifications-component";
 const TIME_FOR_NOTIFICATION = 2000;
 const congigForNotification = {
   insert: "bottom",
-  container: "bottom-right",
+  container: "top-right",
   animationIn: ["animate__animated", "animate__fadeIn"],
   animationOut: ["animate__animated", "animate__fadeOut"],
 };

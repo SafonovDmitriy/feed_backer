@@ -30,7 +30,7 @@ module.exports = function (env) {
       }),
     ],
     resolve: {
-      extensions: ["", ".js", ".jsx", "scss"],
+      extensions: ["", ".js", ".jsx", "css", "scss"],
     },
 
     devtool: env.USE_SOURSE_MAP ? "eval-source-map" : false,
@@ -59,6 +59,10 @@ module.exports = function (env) {
         },
         {
           test: /\.s[ac]ss$/i,
+          use: ["style-loader", "css-loader", "sass-loader"],
+        },
+        {
+          test: /\.css$/i,
           use: ["style-loader", "css-loader", "sass-loader"],
         },
 
