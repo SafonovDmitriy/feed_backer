@@ -1,4 +1,4 @@
-import { SET_CITYES, SET_CITYES_LOADED } from "../actionTypes";
+import { SET_CITIES, SET_CITIES_LOADED } from "../actionTypes";
 
 const initialState = {
   data: [],
@@ -7,9 +7,9 @@ const initialState = {
 
 const cityReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case SET_CITYES:
+    case SET_CITIES:
       return { ...state, data: payload };
-    case SET_CITYES_LOADED:
+    case SET_CITIES_LOADED:
       return { ...state, loaded: payload };
 
     default:
