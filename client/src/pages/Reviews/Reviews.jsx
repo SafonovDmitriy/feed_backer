@@ -1,15 +1,28 @@
 import React from "react";
-import { Button } from "../../components/UI/Button";
 import "./Reviews.styles.scss";
-
-const Reviews = ({ onOpenModalHandler }) => {
+import { ReviewsTable } from "../../components/ReviewsTable";
+import { СhangeBox } from "../../components/СhangeBox";
+const Reviews = ({
+  feedBackList,
+  selectFeedBackId,
+  onOpenModalHandler,
+  selectFeedBackIDHandler,
+  deleteSelectFeedBackHandler,
+  changeSelectedFeedBackHandler,
+}) => {
   return (
     <div className="reviews">
-      <div className="changeBox">
-        <Button type="add" children="Добавить" onClick={onOpenModalHandler} />
-        <Button type="del" children="Удалить" />
-      </div>
-      <div className="reviewsTable"></div>
+      <СhangeBox
+        onOpenModalHandler={onOpenModalHandler}
+        isShowExtraButtons={!!selectFeedBackId}
+        changeHandler={changeSelectedFeedBackHandler}
+        deleteHandler={deleteSelectFeedBackHandler}
+      />
+      <ReviewsTable
+        feedBackList={feedBackList}
+        selectFeedBackId={selectFeedBackId}
+        selectFeedBackIDHandler={selectFeedBackIDHandler}
+      />
     </div>
   );
 };
