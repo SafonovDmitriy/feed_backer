@@ -1,0 +1,13 @@
+.formForComment {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  &_submit_btn {
+    width: 120px;
+    padding: 12px 10px;
+  }
+  & .submitBox {
+    display: flex;
+    justify-content: end;
+  }
+}
