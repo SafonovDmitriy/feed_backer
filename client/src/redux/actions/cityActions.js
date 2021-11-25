@@ -1,4 +1,4 @@
-import { call, put, select, takeLatest } from "redux-saga/effects";
+import { call, put, takeLatest } from "redux-saga/effects";
 import { fetchCityApi } from "../../api/httpService";
 import { FETCH_CITIES, SET_CITIES, SET_CITIES_LOADED } from "../actionTypes";
 export const citySagaWorker = [takeLatest(FETCH_CITIES, fetchCitiesSaga)];
@@ -23,13 +23,8 @@ function* fetchCitiesSaga({ payload }) {
     const {
       data: { data },
     } = yield call(fetchCityApi, { idRegion: payload });
-
     yield put(setCityAction(data));
-    // yield put(setUsersTotalPageAction(totalPage));
   } catch ({ data, status }) {
-    // yield put(errorHandlerAction(status));
-    // showErrorMessage(data?.message);
-  } finally {
-    // yield put(setUsersLoadedAction(true));
+    yield showErrorMessage(data.error);
   }
 }
