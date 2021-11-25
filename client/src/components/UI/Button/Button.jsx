@@ -1,13 +1,27 @@
 import clsx from "clsx";
 import React from "react";
 import "./Button.styles.scss";
-const Button = ({ classes = [], children, type = "default", ...props }) => {
+const Button = ({
+  classes = [],
+  children,
+  typeStyles = "default",
+  ...props
+}) => {
   const TYPE_BUTTONS_MAP = {
     add: {
       classes: ["btn_add"],
+      prevSymbol: null,
+    },
+    addWithIco: {
+      classes: ["btn_add"],
       prevSymbol: "0xFF0B",
     },
+
     del: {
+      classes: ["btn_del"],
+      prevSymbol: null,
+    },
+    delWithIco: {
       classes: ["btn_del"],
       prevSymbol: "0x2212",
     },
@@ -21,14 +35,20 @@ const Button = ({ classes = [], children, type = "default", ...props }) => {
     },
   };
 
-  return TYPE_BUTTONS_MAP[type] ? (
+  return TYPE_BUTTONS_MAP[typeStyles] ? (
     <button
-      className={clsx(...classes, "btn", ...TYPE_BUTTONS_MAP[type].classes)}
+      className={clsx(
+        ...classes,
+        "btn",
+        ...TYPE_BUTTONS_MAP[typeStyles].classes
+      )}
       {...props}
     >
-      <span className={!classes ? "btn_prevSymbol" : ""}>
-        {String.fromCharCode(TYPE_BUTTONS_MAP[type].prevSymbol)}
-      </span>
+      {TYPE_BUTTONS_MAP[typeStyles].prevSymbol && (
+        <span className={!classes ? "btn_prevSymbol" : ""}>
+          {String.fromCharCode(TYPE_BUTTONS_MAP[typeStyles].prevSymbol)}
+        </span>
+      )}
       {children}
     </button>
   ) : null;
