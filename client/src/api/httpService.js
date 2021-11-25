@@ -33,20 +33,25 @@ export const requestCancel = ({
     : instance[method](url, { ...props, cancelToken: cancelToken.token });
 };
 
-// eslint-disable-next-line no-unused-vars
-
 // /region
 export const fetchRegionsApi = () => request({ url: "/region" });
 
 // /city
 export const fetchCityApi = (params) =>
-  request({ url: "/city/region/", props: { params } });
+  request({ url: `/city/region/${params.idRegion}` });
 
 // /feedback
 export const fetchFeedbackApi = () => request({ url: "/feedback" });
-export const postFeedbackApi = () =>
-  request({ url: "/feedback", method: METHODS_MAP.POST });
-export const putFeedbackApi = (parans) =>
-  request({ url: "/feedback", method: METHODS_MAP.PUT, props: { parans } });
-export const deleteFeedbackApi = (parans) =>
-  request({ url: "/feedback", method: METHODS_MAP.DELETE, props: { parans } });
+
+export const postFeedbackApi = (props) =>
+  request({ url: "/feedback", method: METHODS_MAP.POST, props });
+
+export const putFeedbackApi = (payload) =>
+  request({
+    url: `/feedback/${payload.id}`,
+    method: METHODS_MAP.PUT,
+    props: payload.body,
+  });
+
+export const deleteFeedbackApi = (id) =>
+  request({ url: `/feedback/${id}`, method: METHODS_MAP.DELETE });
