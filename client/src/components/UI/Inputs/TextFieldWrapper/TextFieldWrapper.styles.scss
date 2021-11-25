@@ -1,0 +1,44 @@
+$error-color: #aa4a4b;
+.textField_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  & input {
+    height: 25px;
+    border: solid 1px;
+    border-radius: 3px;
+    outline: none;
+    width: 50%;
+    transition: all 0.2s;
+    &:focus-visible {
+      border: solid 1px #97c6ec;
+      box-shadow: 1px 1px 4px 0px #97c6ec;
+    }
+  }
+  & textarea {
+    height: 120px;
+    min-height: 100px;
+    max-height: 200px;
+    min-width: 99%;
+    max-width: 99%;
+  }
+  & .error {
+    color: $error-color;
+    font-size: 15px;
+    padding: 3px 0;
+  }
+}
+.errorInput {
+  & label {
+    color: $error-color;
+  }
+  & input {
+    border-color: $error-color;
+  }
+  & textarea {
+    border-color: $error-color;
+  }
+  & select {
+    border-color: $error-color;
+  }
+}
