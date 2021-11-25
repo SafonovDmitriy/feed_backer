@@ -1,27 +1,30 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
-import { FETCH_CITYES, SET_CITYES, SET_CITYES_LOADED } from "../actionTypes";
-export const citySagaWorker = [takeLatest(FETCH_CITYES, fetchCityesSaga)];
+import { fetchCityApi } from "../../api/httpService";
+import { FETCH_CITIES, SET_CITIES, SET_CITIES_LOADED } from "../actionTypes";
+export const citySagaWorker = [takeLatest(FETCH_CITIES, fetchCitiesSaga)];
 
-export const fetchCityesAction = (payload) => ({
-  type: FETCH_CITYES,
+export const fetchCitiesAction = (payload) => ({
+  type: FETCH_CITIES,
   payload,
 });
 
-export const setCityAction = () => ({
-  type: SET_CITYES,
+export const setCityAction = (payload) => ({
+  type: SET_CITIES,
+  payload,
 });
 
 export const setLoadingFlagForCityAction = (payload) => ({
-  type: SET_CITYES_LOADED,
+  type: SET_CITIES_LOADED,
   payload,
 });
 
-function* fetchCityesSaga(payload) {
+function* fetchCitiesSaga({ payload }) {
   try {
-    // const {
-    //   data: { totalPage, users },
-    // } = yield call(getAllUsersApi, { id:payload });
-    // yield put(setUsersAction(users));
+    const {
+      data: { data },
+    } = yield call(fetchCityApi, { idRegion: payload });
+
+    yield put(setCityAction(data));
     // yield put(setUsersTotalPageAction(totalPage));
   } catch ({ data, status }) {
     // yield put(errorHandlerAction(status));
