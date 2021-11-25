@@ -6,8 +6,8 @@ import { Reviews } from "../../pages/Reviews";
 const Router = () => {
   return (
     <Switch>
-      <Route path={ROUTING_MAP.REVIEWS} children={<Reviews />} />
-      <Route path={ROUTING_MAP.REPORT} children={<Report />} />
+      <Route exact path={ROUTING_MAP.REVIEWS} children={<Reviews />} />
+      <Route exact path={ROUTING_MAP.REPORT} children={<Report />} />
       <Redirect to={ROUTING_MAP.REVIEWS} />
     </Switch>
   );
