@@ -20,6 +20,8 @@ const ReviewsContainer = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [selectFeedBackId, setSelectFeedBackId] = useState(null);
   const [editFeedBack, setEditFeedBack] = useState(null);
+
+  const isShowContent = isLoadedFeedBackList || !!feedBackList.length;
   const onOpenModalHandler = () => {
     setIsOpenModal(true);
   };
@@ -51,7 +53,7 @@ const ReviewsContainer = () => {
       disptach(setLoadedFlagForFeedBackAction(false));
     };
   }, [disptach]);
-  return isLoadedFeedBackList ? (
+  return isShowContent ? (
     <>
       {isOpenModal && (
         <CreateNewReviewsModal
