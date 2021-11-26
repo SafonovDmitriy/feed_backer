@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Loading } from "../../components/Loading";
+import { CreateNewReviewsModal } from "../../components/Modals/CreateNewReviewsModal";
 import {
   deleteFeedBackAction,
   fetchFeedBackAction,
@@ -9,7 +11,6 @@ import {
   feedbacksLoadedSelector,
   feedbacksSelector,
 } from "../../redux/selectors";
-import { CreateNewReviewsModal } from "../../components/Modals/CreateNewReviewsModal";
 import Reviews from "./Reviews";
 
 const ReviewsContainer = () => {
@@ -67,6 +68,8 @@ const ReviewsContainer = () => {
         changeSelectedFeedBackHandler={changeSelectedFeedBackHandler}
       />
     </>
-  ) : null;
+  ) : (
+    <Loading />
+  );
 };
 export default ReviewsContainer;
