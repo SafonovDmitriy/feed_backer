@@ -1,5 +1,3 @@
-// export NODE_OPTIONS=--openssl-legacy-provider
-
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
@@ -7,6 +5,12 @@ const webpack = require("webpack");
 const dotenv = require("dotenv");
 const isEnvProduction = process.env.NODE_ENV === "production";
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const crypto = require("crypto");
+const crypto_orig_createHash = crypto.createHash;
+crypto.createHash = (algorithm) =>
+  crypto_orig_createHash(algorithm == "md4" ? "sha256" : algorithm);
+
 module.exports = function (env) {
   return {
     mode: isEnvProduction ? "production" : "development",
