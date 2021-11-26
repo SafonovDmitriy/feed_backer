@@ -4,28 +4,29 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "webpack-dev-server --node-env development",
-    "build": "webpack --progress --node-env production --env USE_SOURSE_MAP ",
+    "server": "webpack serve --node-env development ",
+    "build": "webpack  --progress --node-env production --env USE_SOURSE_MAP ",
     "build:release": "webpack --progress --node-env production"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.16.0",
+    "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-react": "^7.16.0",
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
-    "css-loader": "^6.5.1",
+    "css-loader": "^4.3.0",
     "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.5.0",
+    "html-webpack-plugin": "^4.5.0",
+    "mini-css-extract-plugin": "^1.6.2",
     "sass": "^1.43.4",
-    "sass-loader": "^12.3.0",
-    "style-loader": "^3.3.1",
-    "webpack": "^5.64.2",
+    "sass-loader": "^10.0.5",
+    "style-loader": "1.3.0",
+    "webpack": "^4.44.2",
     "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.5.0"
+    "webpack-dev-server": "^3.11.1"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
