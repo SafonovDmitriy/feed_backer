@@ -1,7 +1,7 @@
 import React from "react";
 import "./Reviews.styles.scss";
 import { ReviewsTable } from "../../components/ReviewsTable";
-import { СhangeBox } from "../../components/СhangeBox";
+import { ControlleBox } from "../../components/ControlleBox";
 const Reviews = ({
   feedBackList,
   selectFeedBackId,
@@ -12,7 +12,7 @@ const Reviews = ({
 }) => {
   return (
     <div className="reviews">
-      <СhangeBox
+      <ControlleBox
         onOpenModalHandler={onOpenModalHandler}
         isShowExtraButtons={!!selectFeedBackId}
         changeHandler={changeSelectedFeedBackHandler}

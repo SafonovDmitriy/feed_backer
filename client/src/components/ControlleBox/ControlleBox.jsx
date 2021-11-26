@@ -1,11 +1,11 @@
 import React from "react";
 import { Button } from "../UI/Button";
-import "./СhangeBox.styles.scss";
-const СhangeBox = ({
-  onOpenModalHandler,
-  isShowExtraButtons,
-  deleteHandler,
-  changeHandler,
+import "./ControlleBox.styles.scss";
+const ControlleBox = ({
+  onOpenModalHandler = () => {},
+  isShowExtraButtons = false,
+  deleteHandler = () => {},
+  changeHandler = () => {},
 }) => {
   return (
     <div className="changeBox">
@@ -31,4 +31,4 @@ const СhangeBox = ({
     </div>
   );
 };
-export default СhangeBox;
+export default ControlleBox;
