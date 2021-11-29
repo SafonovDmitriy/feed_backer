@@ -44,12 +44,17 @@ module.exports = function (env) {
       extensions: [".js", ".jsx", ".css", ".scss"],
     },
 
-    devtool: env.USE_SOURSE_MAP ? "eval-source-map" : false,
-
+    devtool: env.USE_SOURSE_MAP ? "inline-source-map" : false,
+    performance: {
+      hints: false,
+      maxEntrypointSize: 512000,
+      maxAssetSize: 512000,
+    },
     optimization: {
       splitChunks: {
         chunks: "all",
-        maxSize: 20000,
+        minSize: 5000,
+        maxSize: 10000,
       },
     },
     module: {
