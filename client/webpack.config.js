@@ -6,11 +6,6 @@ const dotenv = require("dotenv");
 const isEnvProduction = process.env.NODE_ENV === "production";
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const crypto = require("crypto");
-const crypto_orig_createHash = crypto.createHash;
-crypto.createHash = (algorithm) =>
-  crypto_orig_createHash(algorithm == "md4" ? "sha256" : algorithm);
-
 module.exports = function (env) {
   return {
     mode: isEnvProduction ? "production" : "development",
@@ -24,9 +19,9 @@ module.exports = function (env) {
       chunkFilename: "[name].[chunkhash].chunk.js",
     },
     devServer: {
-      historyApiFallback: true,
+      host: "0.0.0.0",
       port: 3000,
-      // open: true,
+      open: true,
     },
 
     plugins: [
